@@ -628,7 +628,7 @@ func ContinueFragmentDownload(di *DownloadInfo, state *fragThreadState) bool {
 		if !di.IsLive() || di.IsUnavailable() {
 			if state.Is403 {
 				if di.IsUnavailable() {
-					LogWarn("%s: Download link likely expired and stream is privated or members only, cannot coninue download", state.Name)
+					LogWarn("%s: Download link likely expired and stream is privated or members only, cannot continue download", state.Name)
 				} else {
 					LogWarn("%s: Download link has likely expired and the stream has probably finished processing.", state.Name)
 					LogWarn("%s: You might want to use youtube-dl to download instead.", state.Name)
@@ -876,17 +876,6 @@ func TruncateString(s string, maxBytes int) string {
 	}
 
 	return b.String()
-}
-
-func WriteMuxFile(muxFile, ffmpegCmd string) int {
-	LogGeneral("Writing ffmpeg command to create the final file to %s\n", muxFile)
-	err := os.WriteFile(muxFile, []byte(ffmpegCmd), 0644)
-	if err != nil {
-		LogError("Error writing muxcmd file: %s", err.Error())
-		return 1
-	}
-
-	return 0
 }
 
 func GetFFmpegArgs(audioFile, videoFile, thumbnail, fileDir, fileName string, onlyAudio, onlyVideo bool) FFMpegArgs {
