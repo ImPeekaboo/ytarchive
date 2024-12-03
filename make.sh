@@ -13,7 +13,7 @@ fi
 
 zip ytarchive_linux_amd64.zip ytarchive
 zip ytarchive_windows_amd64.zip ytarchive.exe
-rm ytarchive
+mv ytarchive yta
 mv ytarchive_android_arm64 ytarchive
 zip ytarchive_android_arm64.zip ytarchive
 

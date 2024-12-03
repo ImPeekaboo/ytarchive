@@ -17,7 +17,7 @@ jobs:
       - name: build
         run: ./make.sh
       - name: version
-        run: echo "version=$(./ytarchive -V)" >> $GITHUB_OUTPUT
+        run: echo "version=$(./yta -V)" >> $GITHUB_OUTPUT
         id: version
       - name: release
         uses: marvinpinto/action-automatic-releases@latest
@@ -26,6 +26,7 @@ jobs:
           prerelease: false
           title: ${{ steps.version.outputs.version }}
           files: |
+            ytarchive_android_arm64.zip
             ytarchive_linux_amd64.zip
             ytarchive_windows_amd64.zip
             SHA2-256SUMS
